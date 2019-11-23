@@ -21,6 +21,11 @@
     "howsmydrivingny",
     "howsmydrivingdc"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/glenbikes/howsmydriving-utils.git"
+  },
   "author": "Glen Buhlmann @GlenBikes",
-  "license": "SEE LICENSE IN LICENSE.md"
+  "license": "SEE LICENSE IN LICENSE.md",
+  "homepage": "https://www.npmjs.com/package/howsmydriving-utils"
 }
