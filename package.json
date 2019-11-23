@@ -1,0 +1,26 @@
+{
+  "name": "howsmydriving-utils",
+  "version": "0.1.12",
+  "description": "Utilities used by howsmydriving package any howsmydriving-[region] plug-in modules.",
+  "main": "howsmydriving-utils",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "chokidar": "^3.3.0",
+    "log4js": "^6.1.0"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "keywords": [
+    "howsmydriving",
+    "howsmydrivingwa",
+    "howsmydrivingny",
+    "howsmydrivingdc"
+  ],
+  "author": "Glen Buhlmann @GlenBikes",
+  "license": "SEE LICENSE IN LICENSE.md"
+}
