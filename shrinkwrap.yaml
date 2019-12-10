@@ -7,6 +7,7 @@ dependencies:
   '@types/markdown-it': 0.0.2
   '@types/node-fetch': 1.6.9
   '@types/node-sass': 3.10.32
+  '@types/twit': 2.2.23
   body-parser: 1.19.0
   chokidar: 3.3.0
   express: 4.17.1
@@ -26,6 +27,7 @@ dependencies:
   run-sequence: 2.2.1
   runtypes: 0.10.2
   sw-toolbox: 3.6.0
+  twit: 2.2.11
 devDependencies:
   '@types/node': 12.12.14
   standard-version: 7.0.1
@@ -69,6 +71,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-dC9Y/GTlzrFRxoX3YMztrjcVQ6B8UAvMbx8pAa2B3hINuhB0hv++ufZVauZpG1l9U0rJznB25IFPvf5XtMcIvw==
+  /@types/geojson/7946.0.7:
+    dev: false
+    resolution:
+      integrity: sha512-wE2v81i4C4Ol09RtsWFAqg3BUitWbHSpSlIo+bNdsCJijO9sjme+zm+73ZMCa/qMC8UEERxzGbvmr1cffo2SiQ==
   /@types/jasmine/3.5.0:
     dev: false
     resolution:
@@ -96,6 +102,10 @@ packages:
   /@types/node/12.12.14:
     resolution:
       integrity: sha512-u/SJDyXwuihpwjXy7hOOghagLEV1KdAST6syfnOk6QZAMzZuWZqXy5aYYZbh8Jdpd4escVFP0MvftHNDb9pruA==
+  /@types/node/12.12.16:
+    dev: false
+    resolution:
+      integrity: sha512-vRuMyoOr5yfNf8QWxXegOjeyjpWJxFePzHzmBOIzDIzo+rSqF94RW0PkS6y4T2+VjAWLXHWrfbIJY3E3aS7lUw==
   /@types/range-parser/1.2.3:
     dev: false
     resolution:
@@ -107,6 +117,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-oprSwp094zOglVrXdlo/4bAHtKTAxX6VT8FOZlBKrmyLbNvE1zxZyJ6yikMVtHIvwP45+ZQGJn+FdXGKTozq0g==
+  /@types/twit/2.2.23:
+    dependencies:
+      '@types/geojson': 7946.0.7
+      '@types/node': 12.12.16
+    dev: false
+    resolution:
+      integrity: sha512-r7hqCaOjlzOEtpCM2z+mwCNKXxc9SZAAPL86QVun+TcgrsBfdeQX7s8cf/9QNJVNwTfLC69Yof0zc7G31p09xQ==
   /JSONStream/1.3.5:
     dependencies:
       jsonparse: 1.3.1
@@ -449,6 +466,10 @@ packages:
       node: 0.4 || >=0.5.8
     resolution:
       integrity: sha1-E+v+d4oDIFz+A3UUgeu0szAMEmo=
+  /bluebird/3.7.2:
+    dev: false
+    resolution:
+      integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
   /body-parser/1.19.0:
     dependencies:
       bytes: 3.1.0
@@ -4819,6 +4840,16 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
+  /twit/2.2.11:
+    dependencies:
+      bluebird: 3.7.2
+      mime: 1.6.0
+      request: 2.88.0
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-BkdwvZGRVoUTcEBp0zuocuqfih4LB+kEFUWkWJOVBg6pAE9Ebv9vmsYTTrfXleZGf45Bj5H3A1/O9YhF2uSYNg==
   /type-is/1.6.18:
     dependencies:
       media-typer: 0.3.0
@@ -5230,6 +5261,7 @@ specifiers:
   '@types/node': ^12.12.14
   '@types/node-fetch': ^1.6.7
   '@types/node-sass': ^3.10.32
+  '@types/twit': ^2.2.23
   body-parser: ^1.17.2
   chokidar: ^3.3.0
   express: ^4.15.3
@@ -5250,4 +5282,5 @@ specifiers:
   runtypes: ^0.10.1
   standard-version: ^7.0.1
   sw-toolbox: ^3.6.0
+  twit: ^2.1.0
   typescript: ^2.4.2
