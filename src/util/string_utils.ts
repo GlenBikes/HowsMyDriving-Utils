@@ -163,7 +163,7 @@ export function SplitLongLines(source_lines: Array<string>, maxLen: number): Arr
 }
 
 // Print out subset of tweet object properties.
-function printTweet(tweet: Twit.Twitter.Status) {
+export function PrintTweet(tweet: Twit.Twitter.Status): string {
   var shortened = "";
   
   if (tweet.text) {
