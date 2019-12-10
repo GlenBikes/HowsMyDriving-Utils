@@ -1,3 +1,8 @@
+import './extend/string-ext';
+
+import * as Twit from 'twit';
+import {log} from '../logging';
+
 const ellipsis = '...';
 
 /**
@@ -157,9 +162,40 @@ export function SplitLongLines(source_lines: Array<string>, maxLen: number): Arr
   return truncated_lines;
 }
 
-export function TruncateStringEllipsis(str: string, maxLength: number) {
-  if (str.length > maxLength) {
-    return str.slice(0, maxLength - ellipsis.length) + ellipsis;
+// Print out subset of tweet object properties.
+function printTweet(tweet: Twit.Twitter.Status) {
+  var shortened = "";
+  
+  if (tweet.text) {
+    shortened = tweet.text;
+    try {
+      shortened = tweet.text.trunc(100);
+    } catch ( e ) {
+      log.warn(`Exception in tweet.text.trunc: ${e}.`)
+    }
   }
-  return str;
+  
+  if (tweet.full_text) {
+    shortened = tweet.full_text;
+
+    try {
+      shortened = tweet.full_text.trunc(100);
+    } catch ( e ) {
+      log.warn(`Exception in tweet.full_text.trunc: ${e}.`)
+    }
+  }
+
+  return (
+    "Tweet: id_str: " +
+    tweet.id_str +
+    ", user: " +
+    tweet.user.screen_name +
+    ", in_reply_to_screen_name: " +
+    tweet.in_reply_to_screen_name +
+    ", in_reply_to_status_id_str: " +
+    tweet.in_reply_to_status_id_str +
+    ", " +
+    shortened
+  );
 }
+
