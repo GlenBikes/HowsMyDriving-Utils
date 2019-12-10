@@ -1,8 +1,0 @@
-.aws/**
-*dist*/
-.config/
-.data/
-definitions/**
-log/**
-.localstore/**
-.v8*
