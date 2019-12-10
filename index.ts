@@ -13,5 +13,6 @@ export {StatesAndProvinces} from './src/util/licensehelper';
 export {CompareNumericStrings} from './src/util/string_utils';
 export {DumpObject} from './src/util/string_utils';
 export {SplitLongLines} from './src/util/string_utils';
+export {PrintTweet} from './src/util/string_utils';
 
 log.info(`Module howsmydriving-utils loaded.`);
