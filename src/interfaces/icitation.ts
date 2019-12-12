@@ -2,6 +2,7 @@ export interface ICitation {
   [index: string]: any;
   citation_id: number;
   license: string;
+  region: string;
 }
 
 export class Citation implements ICitation {
@@ -13,5 +14,6 @@ export class Citation implements ICitation {
   
   citation_id: number;
   license: string;
+  region: string;
 }
 
