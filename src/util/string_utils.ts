@@ -167,29 +167,16 @@ export function PrintTweet(tweet: Twit.Twitter.Status): string {
   var shortened = "";
   
   if (tweet.text) {
-    shortened = tweet.text;
-    try {
-      shortened = tweet.text.trunc(100);
-    } catch ( e ) {
-      log.warn(`Exception in tweet.text.trunc: ${e}.`)
-    }
+    shortened = tweet.text.trunc(100);
   }
   
   if (tweet.full_text) {
-    shortened = tweet.full_text;
-
-    try {
-      shortened = tweet.full_text.trunc(100);
-    } catch ( e ) {
-      log.warn(`Exception in tweet.full_text.trunc: ${e}.`)
-    }
+    shortened = tweet.full_text.trunc(100);
   }
 
   return (
-    "Tweet: id_str: " +
+    "id_str: " +
     tweet.id_str +
-    ", user: " +
-    tweet.user.screen_name +
     ", in_reply_to_screen_name: " +
     tweet.in_reply_to_screen_name +
     ", in_reply_to_status_id_str: " +
