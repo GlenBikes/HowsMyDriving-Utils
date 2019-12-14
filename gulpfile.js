@@ -1,8 +1,10 @@
 const gulp = require('gulp');
 const ts = require('gulp-typescript');
-const jasmine = require('gulp-jasmine');
+const mocha = require('gulp-mocha');
 const clean = require('gulp-clean');
 const runSequence = require('run-sequence');
+
+var tsProject = ts.createProject('./tsconfig.json');
 
 gulp.task('build', function() {
     const merge = require('merge2');
@@ -22,18 +24,15 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
-gulp.task('test:run', function() {
-    return gulp.src('dist/spec/**')
-      .pipe(jasmine())
+gulp.task('test', function(cb) {
+  var ret = gulp.src('./dist/test/**/*.ts')
+  .pipe(tsProject())
+  .pipe(mocha( { require: ['ts-node/register'] } ))
+  .on('end', function() { cb; });
+
+  return ret;
 });
 
-gulp.task('watch', ['default'], function() {
-    gulp.watch('src/*.ts', ['default']);
-});
-
-gulp.task('test', [], function(cb) {
-  runSequence('clean', 'build', 'test:run', cb);
-});
-gulp.task('default', [], function(cb) {
-    runSequence('clean', 'build', cb);
+gulp.task('default', function(cb) {
+    runSequence('clean', 'build', 'test', cb);
 });
