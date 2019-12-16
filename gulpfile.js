@@ -9,6 +9,7 @@ const path = require('path');
 
 exports.build = series(
   clean,
+  pretty_check,
   parallel(
     build,
     copyconfigfiles
@@ -21,6 +22,7 @@ exports.pretty = pretty;
 exports.pretty_check = pretty_check;
 exports.default = series(
   clean,
+  pretty_check,
   parallel(
     build,
     copyconfigfiles
