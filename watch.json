@@ -8,8 +8,10 @@
   "restart": {
     "exclude": [
       "^data/",
-      ".*dist.*/",
-      "\\.md$"
+      "^definitions/",
+      "^log/",
+      "^node_modules/",
+      ".*dist.*/"
     ],
     "include": [
       "\\.ts$",

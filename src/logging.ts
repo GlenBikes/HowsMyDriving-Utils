@@ -1,3 +1,7 @@
+import {CitationIds} from './citationIds';
+
+const __MODULE_NAME__ = "HowsMyDriving-Utils"
+
 /**
  *  Standard logging for HowsMyDriving modules.
  *
@@ -17,6 +21,8 @@ log4js.configure(config_path);
 // Create default logger to log that our module was loaded and for
 // config update changes.
 export var log = log4js.getLogger("result");
+
+log.addContext('module', __MODULE_NAME__);
 
 /**
  * Monitor the log4js config file and reloading log instances if the file changes.

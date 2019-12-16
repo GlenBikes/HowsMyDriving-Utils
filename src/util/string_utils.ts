@@ -162,27 +162,3 @@ export function SplitLongLines(source_lines: Array<string>, maxLen: number): Arr
   return truncated_lines;
 }
 
-// Print out subset of tweet object properties.
-export function PrintTweet(tweet: Twit.Twitter.Status): string {
-  var shortened = "";
-  
-  if (tweet.text) {
-    shortened = tweet.text.trunc(100);
-  }
-  
-  if (tweet.full_text) {
-    shortened = tweet.full_text.trunc(100);
-  }
-
-  return (
-    "id_str: " +
-    tweet.id_str +
-    ", in_reply_to_screen_name: " +
-    tweet.in_reply_to_screen_name +
-    ", in_reply_to_status_id_str: " +
-    tweet.in_reply_to_status_id_str +
-    ", " +
-    shortened
-  );
-}
-

@@ -3,7 +3,7 @@ const { series, parallel } = require('gulp');
 const gulp = require('gulp');
 const ts = require('gulp-typescript');
 const mocha = require('gulp-mocha');
-const gulp_clean = require('gulp-clean');
+const del = require('del');
 const path = require('path');
 
 exports.build = series(
@@ -40,8 +40,9 @@ function build(cb) {
 }
 
 function clean(cb) {
-  return gulp.src('dist/**/*', { read: false })
-    .pipe(gulp_clean());
+  return del([
+    'dist/**/*'
+  ]);
 }
 
 function test(cb) {
