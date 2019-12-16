@@ -29,6 +29,7 @@ devDependencies:
   gulp: 4.0.2
   gulp-cli: 2.2.0
   gulp-mocha: 7.0.2
+  gulp-prettier: 2.3.0
   gulp-typescript: 6.0.0-alpha.1
   mocha: 6.2.2
   mocha-typescript: 1.1.17
@@ -2353,6 +2354,17 @@ packages:
       gulp: '>=4'
     resolution:
       integrity: sha512-ZXBGN60TXYnFhttr19mfZBOtlHYGx9SvCSc+Kr/m2cMIGloUe176HBPwvPqlakPuQgeTGVRS47NmcdZUereKMQ==
+  /gulp-prettier/2.3.0:
+    dependencies:
+      plugin-error: 1.0.1
+      prettier: 1.19.1
+      safe-buffer: 5.2.0
+      through2: 3.0.1
+    dev: true
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-3byhZ6+tT3uqZUmIuhNs+upiUiwTtZXQ5vD/rrXq+ZypYyYlCIGGmSYq7wDc0uTJyGhHtYNTJ97ix2hI747zyg==
   /gulp-typescript/6.0.0-alpha.1:
     dependencies:
       ansi-colors: 4.1.1
@@ -4149,7 +4161,6 @@ packages:
     resolution:
       integrity: sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
   /prettier/1.19.1:
-    dev: false
     engines:
       node: '>=4'
     hasBin: true
@@ -5775,6 +5786,7 @@ specifiers:
   gulp: ^4.0.2
   gulp-cli: ^2.2.0
   gulp-mocha: ^7.0.2
+  gulp-prettier: ^2.3.0
   gulp-typescript: ^6.0.0-alpha.1
   log4js: ^6.1.0
   markdown-it: ^8.3.1

@@ -1,6 +1,7 @@
 const { series, parallel } = require('gulp');
 
 const gulp = require('gulp');
+const gulp_prettier = require('gulp-prettier');
 const ts = require('gulp-typescript');
 const mocha = require('gulp-mocha');
 const del = require('del');
@@ -16,6 +17,7 @@ exports.build = series(
 exports.clean = clean;
 exports.copyconfigfiles = copyconfigfiles;
 exports.test = test;
+exports.pretty = pretty;
 exports.default = series(
   clean,
   parallel(
@@ -57,3 +59,11 @@ function copyconfigfiles(cb) {
         .pipe(gulp.dest('./dist/config/'));
 }
 
+function pretty(cb) {
+  return tsProject.src()
+      .pipe(gulp_prettier.check(
+    {
+      config: './.prettierrc.js',
+      ignorePath: './prettierignore'
+    }));
+}
