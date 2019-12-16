@@ -13,26 +13,26 @@
  *   If pad is not a single character, an Error is thrown.
  *
  * See: string-ext.d.ts
-**/
+ **/
 
 declare interface String {
-  lpad(pad: string, length : number) : string;
+  lpad(pad: string, length: number): string;
   trunc(n: number): string;
 }
 
-String.prototype.lpad = function(this: string, pad:string, l: number) {
+String.prototype.lpad = function(this: string, pad: string, l: number) {
   var str: string = this;
 
   if (!pad || pad.length != 1) {
     throw new Error(`Argument pad must be a single character.`);
   }
-  
+
   while (str.length < l) {
     str = pad + str;
   }
-  
+
   return str;
-}
+};
 
 // not sure why I can't make this extended function work...
 String.prototype.trunc = function(n: number): string {

@@ -18,6 +18,7 @@ exports.clean = clean;
 exports.copyconfigfiles = copyconfigfiles;
 exports.test = test;
 exports.pretty = pretty;
+exports.pretty_check = pretty_check;
 exports.default = series(
   clean,
   parallel(
@@ -43,9 +44,7 @@ function build(cb) {
 
 function clean(cb) {
   return del([
-    'dist/**/*'
-  ]);
-}
+    'dist/**/*']);}
 
 function test(cb) {
   return gulp.src('./dist/test/**/*.ts')
@@ -61,9 +60,19 @@ function copyconfigfiles(cb) {
 
 function pretty(cb) {
   return tsProject.src()
+      .pipe(gulp_prettier(
+        {
+          config: './.prettierrc.js',
+          ignorePath: './prettierignore'
+        }))
+      .pipe(gulp.dest('.'));
+}
+
+function pretty_check(cb) {
+  return tsProject.src()
       .pipe(gulp_prettier.check(
-    {
-      config: './.prettierrc.js',
-      ignorePath: './prettierignore'
-    }));
+        {
+          config: './.prettierrc.js',
+          ignorePath: './prettierignore'
+        }));
 }
