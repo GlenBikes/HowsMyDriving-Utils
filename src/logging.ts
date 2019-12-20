@@ -1,5 +1,3 @@
-import { CitationIds } from './citationIds';
-
 const __MODULE_NAME__ = 'HowsMyDriving-Utils';
 
 /**
@@ -9,11 +7,10 @@ const __MODULE_NAME__ = 'HowsMyDriving-Utils';
  *  logs will be integrated with the infrastructure logs and all the
  *  other plugin logs.
  **/
-var log4js = require('log4js'),
+const log4js = require('log4js'),
   chokidar = require('chokidar'),
-  path = require('path');
-
-const config_path = path.resolve(__dirname + '/../config/log4js.json');
+  path = require('path'),
+  config_path = path.resolve(__dirname + '/../config/log4js.json');
 
 // Load the config.
 log4js.configure(config_path);
@@ -22,7 +19,10 @@ log4js.configure(config_path);
 // config update changes.
 export var log = log4js.getLogger('result');
 
+console.log(`Adding context: ${__MODULE_NAME__}.`);
 log.addContext('module', __MODULE_NAME__);
+
+import { CitationIds } from './citationIds';
 
 /**
  * Monitor the log4js config file and reloading log instances if the file changes.

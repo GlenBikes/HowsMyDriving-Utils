@@ -2,26 +2,7 @@ import * as Twit from 'twit';
 
 import '../../src/util/extend/string-ext';
 
-export interface ITwitterUser {
-  id?: number;
-  id_str?: string;
-  screen_name?: string;
-}
-
-export interface ITweet {
-  id?: number;
-  id_str?: string;
-  user_screen_name?: string;
-  in_reply_to_screen_name?: string;
-  in_reply_to_status_id?: number;
-  in_reply_to_status_id_str?: string;
-  tweet_user_id?: number;
-  tweet_user_id_str?: string;
-  tweet_user_screen_name?: string;
-  full_text?: string;
-  display_text_range?: Array<number>;
-  user?: ITwitterUser;
-}
+import { ITweet, ITwitterUser } from 'howsmydriving-twitter';
 
 export function createTweet(options: ITweet): ITweet {
   let ret: ITweet = options;
@@ -30,7 +11,7 @@ export function createTweet(options: ITweet): ITweet {
 }
 
 // Print out subset of tweet object properties.
-export function PrintTweet(tweet: Twit.Twitter.Status): string {
+export function PrintTweet(tweet: ITweet): string {
   var shortened = '';
 
   if (tweet.text) {
