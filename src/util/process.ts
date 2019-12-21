@@ -1,8 +1,9 @@
-import { LMXClient, LMXBroker, Client, Broker } from 'live-mutex';
+//import { LMXClient, LMXBroker, Client, Broker } from 'live-mutex';
 import * as findFreePort from 'find-port-free-sync';
 
 import { log } from '../logging';
 
+/*
 var mutex_broker: Broker;
 
 function getUnusedPort(): number {
@@ -126,6 +127,7 @@ process
       });
     }
   });
+*/
 
 // Fake a sleep function. Call this thusly:
 // sleep(500).then(() => {

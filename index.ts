@@ -18,10 +18,9 @@ export { CompareNumericStrings } from './src/util/string_utils';
 export { DumpObject } from './src/util/string_utils';
 export { SplitLongLines } from './src/util/string_utils';
 
-export { GetMutexClient } from './src/util/process';
+//export { GetMutexClient } from './src/util/process';
 export { sleep } from './src/util/process';
 
-// TODO: Move these to into a mocks type of interface file
 export { createTweet } from './test/mocks/twitter';
 export { PrintTweet } from './test/mocks/twitter';
 
