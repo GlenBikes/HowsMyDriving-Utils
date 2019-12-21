@@ -19,7 +19,6 @@ log4js.configure(config_path);
 // config update changes.
 export var log = log4js.getLogger('result');
 
-console.log(`Adding context: ${__MODULE_NAME__}.`);
 log.addContext('module', __MODULE_NAME__);
 
 import { CitationIds } from './citationIds';
