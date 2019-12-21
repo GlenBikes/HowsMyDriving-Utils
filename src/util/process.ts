@@ -1,84 +1,100 @@
 import { LMXClient, LMXBroker, Client, Broker } from 'live-mutex';
-import * as getPort from 'get-port';
+import * as findFreePort from 'find-port-free-sync';
 
 import { log } from '../logging';
 
-// One global broker for the live-mutex clients.
-const mutex_default_port: number = 8654;
 var mutex_broker: Broker;
 
-export function GetMutexClient(): Client {
-  var mutex_client: Client;
+function getUnusedPort(): number {
+  let port = findFreePort({
+    start: 1025,
+    end: 49151,
+    ip: '127.0.0.1'
+  });
 
+  log.info(`getUnusedPort: returning ${port}.`);
+  return port;
+}
+
+export function GetMutexClient(): Promise<Client> {
   try {
+    var mutex_client: Client;
+    var broker_promise: Promise<Broker>;
+
     if (!mutex_broker) {
-      let opts = { port: mutex_default_port };
+      log.info(`Creating mutex_broker: ${new Error().stack}`);
 
-      if (process.env.LMXPORT) {
-        opts.port = parseInt(process.env.LMXPORT, 10);
+      broker_promise = new Promise<Broker>((resolve, reject) => {
+        let selected_port = getUnusedPort();
 
-        if (opts.port === NaN) {
-          log.warn(
-            `Invalid LMXPORT specified. Defaulting to ${mutex_default_port}.`
-          );
-          opts.port = mutex_default_port;
-        }
-      }
-      mutex_broker = new LMXBroker(opts);
-      mutex_broker.emitter.on('warning', function() {
-        log.warn(...arguments);
-      });
+        log.debug(`Retrieved unused port: suggested: ${selected_port}.`);
 
-      mutex_broker.emitter.on('error', function() {
-        log.error(...arguments);
-      });
-
-      log.info(`Mutex broker created, listening on port ${mutex_broker.port}.`);
-    }
-
-    mutex_broker
-      .ensure()
-      .then(() => {
-        log.debug(
-          `Successfully created mutex broker listening on port ${mutex_broker.getListeningInterface()}.`
-        );
-
-        mutex_client = new LMXClient({ port: mutex_broker.port });
-
-        mutex_client.emitter.on('info', function() {
-          log.debug(...arguments);
-        });
-
-        mutex_client.emitter.on('warning', function() {
+        log.info(`Creating mutex_broker with port ${selected_port}.`);
+        mutex_broker = new LMXBroker({ port: selected_port });
+        mutex_broker.emitter.on('warning', function() {
           log.warn(...arguments);
         });
 
-        mutex_client.emitter.on('error', function() {
+        mutex_broker.emitter.on('error', function() {
           log.error(...arguments);
         });
 
-        mutex_client
-          .connect()
-          .then(client => {
-            log.info(
-              `Successfully created mutex client on port ${mutex_broker.port}.`
-            );
-          })
-          .catch((err: Error) => {
-            log.info(`Failed to connect mutex client. Err: ${err}.`);
-            throw err;
-          });
-      })
-      .catch(err => {
-        log.error(`Error creating mutex client: ${err}.`);
-        throw err;
+        log.info(
+          `Mutex broker created, listening on port ${mutex_broker.port}.`
+        );
+
+        resolve(mutex_broker);
       });
+    } else {
+      broker_promise = Promise.resolve(mutex_broker);
+    }
+
+    return new Promise<Client>((resolve, reject) => {
+      broker_promise
+        .then(mutex_broker => {
+          log.debug(
+            `Successfully ensured mutex broker listening on port ${mutex_broker.getListeningInterface()}.`
+          );
+
+          log.debug(`Creating mutex client.`);
+
+          mutex_client = new LMXClient({ port: mutex_broker.port });
+
+          mutex_client.emitter.on('info', function() {
+            log.debug(...arguments);
+          });
+
+          mutex_client.emitter.on('warning', function() {
+            log.warn(...arguments);
+          });
+
+          mutex_client.emitter.on('error', function() {
+            log.error(...arguments);
+          });
+
+          mutex_client
+            .connect()
+            .then(client => {
+              log.info(
+                `Successfully created mutex client on port ${mutex_broker.port}.`
+              );
+
+              resolve(mutex_client);
+            })
+            .catch((err: Error) => {
+              log.info(`Failed to connect mutex client. Err: ${err}.`);
+              throw err;
+            });
+        })
+        .catch(err => {
+          log.error(`Error creating mutex broker or client: ${err}.`);
+          throw err;
+        });
+    });
   } catch (err) {
-    log.error(`Error creating mutex client: ${err}.`);
+    log.error(`Error creating mutex broker or client: ${err}.`);
     throw err;
   }
-
-  return mutex_client;
 }
 
 process
@@ -86,7 +102,7 @@ process
     log.info(`Process exiting with exit code: ${code}.`);
     if (mutex_broker) {
       mutex_broker.close(() => {
-        log.info('Server is closed.');
+        log.info('Mutex broker is closed.');
       });
     }
   })
@@ -95,7 +111,7 @@ process
 
     if (mutex_broker) {
       mutex_broker.close(() => {
-        log.info('Server is closed.');
+        log.info('Mutex broker is closed.');
       });
     }
   })
@@ -106,7 +122,7 @@ process
 
     if (mutex_broker) {
       mutex_broker.close(() => {
-        log.info('Server is closed.');
+        log.info('Mutex broker is closed.');
       });
     }
   });
