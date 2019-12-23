@@ -1,6 +1,13 @@
-let app_root_dir = require('app-root-dir').get();
+import { sleep } from 'howsmydriving-utils';
+
+const packpath = require('packpath');
 
 const __MODULE_NAME__ = 'HowsMyDriving-Utils';
+
+console.log(`packpath parent: ${packpath.parent()}, self: ${packpath.self()}.`);
+
+let packpath_parent = packpath.parent() ? packpath.parent() : packpath.self();
+let packpath_self = packpath.self();
 
 /**
  *  Standard logging for HowsMyDriving modules.
@@ -9,10 +16,10 @@ const __MODULE_NAME__ = 'HowsMyDriving-Utils';
  *  logs will be integrated with the infrastructure logs and all the
  *  other plugin logs.
  **/
-const log4js = require('log4js'),
+var log4js = require('log4js'),
   chokidar = require('chokidar'),
   path = require('path'),
-  config_path = path.resolve(app_root_dir + '/dist/config/log4js.json');
+  config_path = path.join(packpath_parent + '/dist/config/log4js.json');
 
 // Load the config.
 log4js.configure(config_path);
@@ -22,7 +29,7 @@ log4js.configure(config_path);
 export var log = log4js.getLogger('result');
 
 log.addContext('module', __MODULE_NAME__);
-log.info(`app_root_dir: ${app_root_dir}.`);
+log.info(`log4js config path: ${config_path}.`);
 
 import { CitationIds } from './citationIds';
 
@@ -47,17 +54,48 @@ var watcher = chokidar.watch(config_path, {
  **/
 function reloadlog(reason: string) {
   log.info(`Reloading log config due to config file ${reason}.`);
+
+  log.info(`Reloading log config due to config file ${reason}.`);
+  // Leave the current log active until after we replace it.
+  // This should allow any code with a stale instance to keep logging
+  // until they are done.
+  try {
+    log4js.shutdown((err: Error) => {
+      if (err) {
+        log.error(`Error occurred during log shutdown: ${err}.`);
+      }
+    });
+  } catch (err) {
+    log.error(`Error occurred during log shutdown: ${err}.`);
+  }
+
+  log4js.configure(config_path);
+  log = log4js.getLogger('reason');
+  log.addContext('module', __MODULE_NAME__);
+
+  /*
   log4js.shutdown(() => {
     log4js.configure(config_path);
     log = log4js.getLogger('reason');
+    lastdmLog = log4js.getLogger('_lastdm');
+    lastmentionLog = log4js.getLogger('_lastdm');
+
+    log.addContext('module', __MODULE_NAME__);
+    lastdmLog.addContext('module', __MODULE_NAME__);
+    lastmentionLog.addContext('module', __MODULE_NAME__);
   });
+  */
 }
 
 // Handle the change/add events for the log4js config file.
 watcher
   .on('add', (path: string) => {
-    reloadlog(`add of ${path}`);
+    sleep(2000).then(() => {
+      reloadlog(`add of ${path}`);
+    });
   })
   .on('change', (path: string) => {
-    reloadlog(`change of ${path}`);
+    sleep(2000).then(() => {
+      reloadlog(`change of ${path}`);
+    });
   });
