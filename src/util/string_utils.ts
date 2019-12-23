@@ -1,6 +1,5 @@
 import './extend/string-ext';
 
-import * as Twit from 'twit';
 import { log } from '../logging';
 
 const ellipsis = '...';

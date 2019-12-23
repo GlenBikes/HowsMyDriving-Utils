@@ -1,5 +1,3 @@
-import * as Twit from 'twit';
-
 import '../../src/util/extend/string-ext';
 
 import { ITweet, ITwitterUser } from 'howsmydriving-twitter';
