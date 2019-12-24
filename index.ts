@@ -1,18 +1,15 @@
-const packpath = require('packpath');
+import * as packpath from 'packpath';
+import * as path from 'path';
 
 import './src/util/extend/string-ext';
 import { DumpObject } from 'howsmydriving-utils';
 
 import { log } from './src/logging';
 
-var path = require('path');
-
 let packpath_parent = packpath.parent() ? packpath.parent() : packpath.self();
 let packpath_self = packpath.self();
 
 const package_json_path = path.join(packpath_self, '/package.json');
-
-log.info(`package.json path: ${package_json_path}.`);
 
 let pjson = require(package_json_path);
 

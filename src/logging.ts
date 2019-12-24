@@ -4,8 +4,6 @@ const packpath = require('packpath');
 
 const __MODULE_NAME__ = 'HowsMyDriving-Utils';
 
-console.log(`packpath parent: ${packpath.parent()}, self: ${packpath.self()}.`);
-
 let packpath_parent = packpath.parent() ? packpath.parent() : packpath.self();
 let packpath_self = packpath.self();
 
@@ -29,7 +27,6 @@ log4js.configure(config_path);
 export var log = log4js.getLogger('result');
 
 log.addContext('module', __MODULE_NAME__);
-log.info(`log4js config path: ${config_path}.`);
 
 import { CitationIds } from './citationIds';
 
