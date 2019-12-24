@@ -53,25 +53,24 @@ var watcher = chokidar.watch(config_path, {
  *       they update to the new log level?
  **/
 function reloadlog(reason: string) {
+  /*
   log.info(`Reloading log config due to config file ${reason}.`);
 
   log.info(`Reloading log config due to config file ${reason}.`);
   // Leave the current log active until after we replace it.
   // This should allow any code with a stale instance to keep logging
   // until they are done.
-  try {
-    log4js.shutdown((err: Error) => {
-      if (err) {
-        log.error(`Error occurred during log shutdown: ${err}.`);
-      }
-    });
-  } catch (err) {
-    log.error(`Error occurred during log shutdown: ${err}.`);
-  }
+  log4js.shutdown((err: Error) => {
+    if (err) {
+      log.error(`Error occurred during log shutdown: ${err}.`);
+    }
 
-  log4js.configure(config_path);
-  log = log4js.getLogger('reason');
-  log.addContext('module', __MODULE_NAME__);
+    sleep(10000).then(() => {
+      log4js.configure(config_path);
+      log = log4js.getLogger('reason');
+      log.addContext('module', __MODULE_NAME__);
+    });
+  });
 
   /*
   log4js.shutdown(() => {
