@@ -1,7 +1,6 @@
 import './extend/string-ext';
 
-import * as Twit from 'twit';
-import {log} from '../logging';
+import { log } from '../logging';
 
 const ellipsis = '...';
 
@@ -17,16 +16,16 @@ const ellipsis = '...';
  *   0 -   a and b are numberically equal (may not be string equal though)
  *   < 0 - a < b (a is numerically less than b)
  *   > 0 - a > b (a is numerically greater than b)
-**/
+ **/
 export function CompareNumericStrings(a: string, b: string): number {
   if (a.length > b.length) {
     b = b.lpad('0', a.length);
   }
-  
+
   if (b.length > a.length) {
     a = a.lpad('0', b.length);
   }
-  
+
   if (a == b) {
     return 0;
   } else if (a < b) {
@@ -41,36 +40,36 @@ export function CompareNumericStrings(a: string, b: string): number {
  *
  * Params:
  *   o:      Object to dump
- *   Indent: # characters to indent. This allows creating an intented 
+ *   Indent: # characters to indent. This allows creating an intented
  *           tree structure of an obect.
  *
  * Returns:
  *   String representing a dump of o and all it's values.
  */
 export function DumpObject(o: any, indent: number = 0): string {
-  var out: string = "";
-  if (typeof indent === "undefined") {
+  var out: string = '';
+  if (typeof indent === 'undefined') {
     indent = 0;
   }
   for (var p in o) {
     if (o.hasOwnProperty(p)) {
       var val: any = o[p];
-      out += new Array(4 * indent + 1).join(" ") + p + ": ";
-      if (typeof val === "object") {
+      out += new Array(4 * indent + 1).join(' ') + p + ': ';
+      if (typeof val === 'object') {
         if (val instanceof Date) {
           out += 'Date "' + val.toISOString() + '"';
         } else {
           out +=
-            "{\n" +
+            '{\n' +
             DumpObject(val, indent + 1) +
-            new Array(4 * indent + 1).join(" ") +
-            "}";
+            new Array(4 * indent + 1).join(' ') +
+            '}';
         }
-      } else if (typeof val === "function") {
+      } else if (typeof val === 'function') {
       } else {
         out += '"' + val + '"';
       }
-      out += ",\n";
+      out += ',\n';
     }
   }
   return out;
@@ -92,23 +91,26 @@ export function DumpObject(o: any, indent: number = 0): string {
  * Note: elements in source_lines are not joined if < maxLen, only broken
  *       up if > maxLen
  **/
-export function SplitLongLines(source_lines: Array<string>, maxLen: number): Array<string> {
+export function SplitLongLines(
+  source_lines: Array<string>,
+  maxLen: number
+): Array<string> {
   var truncated_lines: Array<string> = [];
 
   var index: number = 0;
   source_lines.forEach(source_line => {
     if (source_line.length > maxLen) {
       // break it up into lines to start with
-      var chopped_lines: Array<string> = source_line.split("\n");
-      var current_line: string = "";
+      var chopped_lines: Array<string> = source_line.split('\n');
+      var current_line: string = '';
       var first_line: boolean = true;
 
-      chopped_lines.forEach( (line: string) => {
+      chopped_lines.forEach((line: string) => {
         if (line.length > maxLen) {
           // OK we have a single line that is too long for a tweet
           if (current_line.length > 0) {
             truncated_lines.push(current_line);
-            current_line = "";
+            current_line = '';
             first_line = true;
           }
 
@@ -137,7 +139,7 @@ export function SplitLongLines(source_lines: Array<string>, maxLen: number): Arr
         } else {
           if (current_line.length + line.length + 1 <= maxLen) {
             if (!first_line) {
-              current_line += "\n";
+              current_line += '\n';
             }
             current_line += line;
             first_line = false;
@@ -161,41 +163,3 @@ export function SplitLongLines(source_lines: Array<string>, maxLen: number): Arr
 
   return truncated_lines;
 }
-
-// Print out subset of tweet object properties.
-export function PrintTweet(tweet: Twit.Twitter.Status): string {
-  var shortened = "";
-  
-  if (tweet.text) {
-    shortened = tweet.text;
-    try {
-      shortened = tweet.text.trunc(100);
-    } catch ( e ) {
-      log.warn(`Exception in tweet.text.trunc: ${e}.`)
-    }
-  }
-  
-  if (tweet.full_text) {
-    shortened = tweet.full_text;
-
-    try {
-      shortened = tweet.full_text.trunc(100);
-    } catch ( e ) {
-      log.warn(`Exception in tweet.full_text.trunc: ${e}.`)
-    }
-  }
-
-  return (
-    "Tweet: id_str: " +
-    tweet.id_str +
-    ", user: " +
-    tweet.user.screen_name +
-    ", in_reply_to_screen_name: " +
-    tweet.in_reply_to_screen_name +
-    ", in_reply_to_status_id_str: " +
-    tweet.in_reply_to_status_id_str +
-    ", " +
-    shortened
-  );
-}
-

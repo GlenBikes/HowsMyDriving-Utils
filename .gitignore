@@ -1,7 +1,7 @@
 .aws/**
-*dist*/
 .config/
 .data/
+dist/**
 definitions/**
 log/**
 .localstore/**

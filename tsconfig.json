@@ -7,12 +7,17 @@
     "declaration": true,
     "rootDir": ".",
     "outDir": "dist",
-    "types" : ["node", "jasmine"]
+    "preserveSymlinks": true,
+    "downlevelIteration": true,
+    "types" : ["node", "mocha"]
   },
   "include": [
     "index.ts",
-    "definitions/**/*.ts",
     "src/**/*.ts",
-    "spec/**/*.ts"  
+    "test/**/*.ts"  
+  ],
+  "exclude": [
+    "node_modules",
+    "log/**"
   ]
 }

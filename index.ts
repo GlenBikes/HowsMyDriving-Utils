@@ -1,18 +1,36 @@
-import './src/interfaces/string-ext';
+import * as packpath from 'packpath';
+import * as path from 'path';
 
-import {log} from './src/logging';
+import './src/util/extend/string-ext';
+import { DumpObject } from 'howsmydriving-utils';
 
-export {ICitation} from './src/interfaces/icitation';
-export {Citation} from './src/interfaces/icitation';
-export {IRegion} from './src/interfaces/iregion';
-export {CitationIds} from './src/citationIds';
+import { log } from './src/logging';
 
-export {formatPlate} from './src/util/licensehelper';
-export {StatesAndProvinces} from './src/util/licensehelper';
+let packpath_parent = packpath.parent() ? packpath.parent() : packpath.self();
+let packpath_self = packpath.self();
 
-export {CompareNumericStrings} from './src/util/string_utils';
-export {DumpObject} from './src/util/string_utils';
-export {SplitLongLines} from './src/util/string_utils';
-export {PrintTweet} from './src/util/string_utils';
+const package_json_path = path.join(packpath_self, '/package.json');
 
-log.info(`Module howsmydriving-utils loaded.`);
+let pjson = require(package_json_path);
+
+export { ICitation } from './src/interfaces/icitation';
+
+export { Citation } from './src/interfaces/icitation';
+export { IRegion } from './src/interfaces/iregion';
+export { Region } from './src/interfaces/iregion';
+export { CitationIds } from './src/citationIds';
+
+export { formatPlate } from './src/util/licensehelper';
+export { StatesAndProvinces } from './src/util/licensehelper';
+
+export { CompareNumericStrings } from './src/util/string_utils';
+export { DumpObject } from './src/util/string_utils';
+export { SplitLongLines } from './src/util/string_utils';
+
+//export { GetMutexClient } from './src/util/process';
+export { sleep } from './src/util/process';
+
+export { createTweet } from './test/mocks/twitter';
+export { PrintTweet } from './test/mocks/twitter';
+
+log.info(`Module ${pjson.name} version '${pjson.version}' loaded.`);

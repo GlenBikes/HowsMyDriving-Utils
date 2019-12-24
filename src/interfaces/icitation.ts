@@ -2,16 +2,20 @@ export interface ICitation {
   [index: string]: any;
   citation_id: number;
   license: string;
+  region: string;
 }
 
 export class Citation implements ICitation {
   [index: string]: any;
-  constructor(citation_id: number, license: string) {
-    this.citation_id = citation_id;
-    this.license = license;
+  constructor();
+  constructor(citation: ICitation);
+  constructor(citation?: ICitation) {
+    if (citation) {
+      Object.assign(this, citation);
+    }
   }
-  
+
   citation_id: number;
   license: string;
+  region: string;
 }
-
