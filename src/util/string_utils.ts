@@ -103,7 +103,6 @@ export function SplitLongLines(
       // break it up into lines to start with
       var chopped_lines: Array<string> = source_line.split('\n');
       var current_line: string = '';
-      var first_line: boolean = true;
 
       chopped_lines.forEach((line: string) => {
         if (line.length > maxLen) {
@@ -111,7 +110,6 @@ export function SplitLongLines(
           if (current_line.length > 0) {
             truncated_lines.push(current_line);
             current_line = '';
-            first_line = true;
           }
 
           // word break it into multiple items
@@ -138,17 +136,15 @@ export function SplitLongLines(
           truncated_lines = truncated_lines.concat(rest_truncated_lines);
         } else {
           if (current_line.length + line.length + 1 <= maxLen) {
-            if (!first_line) {
+            if (current_line.length > 0) {
               current_line += '\n';
             }
             current_line += line;
-            first_line = false;
           } else {
             truncated_lines.push(current_line);
 
             // Start again
             current_line = line;
-            first_line = true;
           }
         }
       });
