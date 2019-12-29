@@ -8,6 +8,6 @@ import { log } from '../logging';
 //   do stuff
 // })
 // Or similar pattrs that use a Promise
-export const sleep = (milliseconds: number) => {
+export function sleep(milliseconds: number) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
-};
+}
