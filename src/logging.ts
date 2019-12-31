@@ -1,30 +1,38 @@
-const packpath = require('packpath');
-const appRootDir = require('app-root-dir').get();
-const appRootPath = require('app-root-path');
-
+import * as packpath from 'packpath';
 import * as path from 'path';
+import * as fs from 'fs';
+
+import { getAppRootPath, sleep } from './util/process';
 
 let packpath_parent = packpath.parent() ? packpath.parent() : packpath.self();
 let packpath_self = packpath.self();
-let package_config_path = path.resolve(packpath_self + '/package.json');
 
-console.log(
-  ' logging.ts ' +
-    `howsmydriving-twitter:\n - packpath_self: ${packpath_self}\n - packpath_parent: ${packpath.parent()}\n - app-root-dir: ${appRootDir}\n - app-root-path: ${appRootPath}\n - app-root (current): see below\n - app-root (root): see below\n - __dirname: ${__dirname}\n - .: ${path.resolve(
-      '.'
-    )}`
+let package_json_path = path.resolve(__dirname + '/../package.json');
+
+if (!fs.existsSync(package_json_path)) {
+  package_json_path = path.resolve(__dirname + '/../../package.json');
+
+  if (!fs.existsSync(package_json_path)) {
+    throw new Error(`Cannot find package.json: ${__dirname}.`);
+  }
+}
+
+var pjson = require(package_json_path);
+
+// Put this at very top so other modules can import it without taking
+// dependencies on something else in the module being instantiated.
+export const __MODULE_NAME__ = pjson.name;
+export const __MODULE_VERSION__ = pjson.version;
+
+const temp_log4js_config_path = path.resolve(
+  packpath_parent + '/dist/config/log4js.json'
 );
 
-export const log4js_config_path = path.resolve(
-  appRootDir + '/dist/config/log4js.json'
-);
+if (!fs.existsSync(temp_log4js_config_path)) {
+  throw new Error(`Cannot find log4js.json: ${temp_log4js_config_path}.`);
+}
 
-console.log(
-  ' logging.ts ' +
-    `howsmydriving-twitter: log4js_config_path:\n - ${log4js_config_path}`
-);
-
-import { sleep } from 'howsmydriving-utils';
+export const log4js_config_path = temp_log4js_config_path;
 
 /**
  *  Standard logging for HowsMyDriving modules.
@@ -34,31 +42,25 @@ import { sleep } from 'howsmydriving-utils';
  *  other plugin logs.
  **/
 var log4js = require('log4js'),
-  chokidar = require('chokidar'),
-  config_path = path.join(packpath_parent + '/dist/config/log4js.json'),
-  pjson = require(package_config_path);
-
-const __MODULE_NAME__ = pjson.name;
-const __MODULE_VERSION__ = pjson.version;
+  chokidar = require('chokidar');
 
 // Load the config.
-log4js.configure(config_path);
+log4js.configure(log4js_config_path);
 
 // Create default logger to log that our module was loaded and for
 // config update changes.
-export var log = log4js.getLogger('result');
+var temp_log = log4js.getLogger('result');
+temp_log.addContext('module', __MODULE_NAME__);
+temp_log.info(`howsmydriving-utils: Adding log4js (${log4js_config_path}) context: ${__MODULE_NAME__}.`);
 
-log.addContext('module', __MODULE_NAME__);
-log.info(
-  `howsmydriving-utils: package_config_path: ${package_config_path}, __MODULE_NAME__: ${__MODULE_NAME__} __MODULE_VERSION__: ${__MODULE_VERSION__}.`
-);
+export const log = temp_log;
 
 import { CitationIds } from './citationIds';
 
 /**
  * Monitor the log4js config file and reloading log instances if the file changes.
  **/
-var watcher = chokidar.watch(config_path, {
+var watcher = chokidar.watch(log4js_config_path, {
   ignored: /(^|[\/\\])\../, // ignore dotfiles
   persistent: true,
   awaitWriteFinish: true
@@ -88,7 +90,7 @@ function reloadlog(reason: string) {
     }
 
     sleep(10000).then(() => {
-      log4js.configure(config_path);
+      log4js.configure(log4js_config_path);
       log = log4js.getLogger('reason');
       log.addContext('module', __MODULE_NAME__);
     });
@@ -96,7 +98,7 @@ function reloadlog(reason: string) {
 
   /*
   log4js.shutdown(() => {
-    log4js.configure(config_path);
+    log4js.configure(log4js_config_path);
     log = log4js.getLogger('reason');
     lastdmLog = log4js.getLogger('_lastdm');
     lastmentionLog = log4js.getLogger('_lastdm');

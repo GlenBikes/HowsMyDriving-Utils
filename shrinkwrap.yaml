@@ -3,7 +3,7 @@ dependencies:
   '@types/uuid': 3.4.6
   chokidar: 3.3.0
   find-port-free-sync: 1.0.1
-  howsmydriving-twitter: 0.1.77
+  howsmydriving-twitter: 0.1.85
   log4js: 6.1.0
   merge2: 1.3.0
   packpath: 0.1.0
@@ -12,6 +12,8 @@ devDependencies:
   del: 5.1.0
   gulp: 4.0.2
   gulp-cli: 2.2.0
+  gulp-debug: 4.0.0
+  gulp-load-plugins: 2.0.1
   gulp-mocha: 7.0.2
   gulp-prettier: 2.3.0
   gulp-typescript: 6.0.0-alpha.1
@@ -1713,6 +1715,17 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-YbffarhcicEhOrm4CtrwdKBdCuz576RLdhJDsIfvNtxUuhdRet1qZcsMjqbePtAseKdAnDyM/IyXbu7PRPRLYg==
+  /findup-sync/4.0.0:
+    dependencies:
+      detect-file: 1.0.0
+      is-glob: 4.0.1
+      micromatch: 4.0.2
+      resolve-dir: 1.0.1
+    dev: true
+    engines:
+      node: '>= 8'
+    resolution:
+      integrity: sha512-6jvvn/12IC4quLBL1KNokxC7wWTvYncaVUYSoxWw7YykPLuRrnv4qdHcSOywOI5RpkOVGeQRtWM8/q+G6W6qfQ==
   /fined/1.2.0:
     dependencies:
       expand-tilde: 2.0.2
@@ -1876,6 +1889,10 @@ packages:
       node: 6.* || 8.* || >= 10.*
     resolution:
       integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
+  /get-own-enumerable-property-symbols/3.0.2:
+    dev: true
+    resolution:
+      integrity: sha512-I0UBV/XOz1XkIJHEUDMZAbzCThU/H8DxmSfmdGcKPnVhu2VfFqr34jr9777IyaTYvxjedWhqVIilEDsCdP5G6g==
   /get-pkg-repo/1.4.0:
     dependencies:
       hosted-git-info: 2.8.5
@@ -2125,6 +2142,35 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-rGs3bVYHdyJpLqR0TUBnlcZ1O5O++Zs4bA0ajm+zr3WFCfiSLjGwoCBqFs18wzN+ZxahT9DkOK5nDf26iDsWjA==
+  /gulp-debug/4.0.0:
+    dependencies:
+      chalk: 2.4.2
+      fancy-log: 1.3.3
+      plur: 3.1.1
+      stringify-object: 3.3.0
+      through2: 2.0.5
+      tildify: 1.2.0
+    dev: true
+    engines:
+      node: '>=6'
+    peerDependencies:
+      gulp: '>=4'
+    resolution:
+      integrity: sha512-cn/GhMD2nVZCVxAl5vWao4/dcoZ8wUJ8w3oqTvQaGDmC1vT7swNOEbhQTWJp+/otKePT64aENcqAQXDcdj5H1g==
+  /gulp-load-plugins/2.0.1:
+    dependencies:
+      array-unique: 0.3.2
+      fancy-log: 1.3.3
+      findup-sync: 4.0.0
+      gulplog: 1.0.0
+      has-gulplog: 0.1.0
+      micromatch: 4.0.2
+      resolve: 1.14.1
+    dev: true
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-WTYIvfEg3j9dRUUkLSE0+MIliU2Jvvc3J7f7fb66ifqSEPS/Ki2xwGfcl68dJN8b+ZGl+9CE3sOl4hfiLmcUIQ==
   /gulp-mocha/7.0.2:
     dependencies:
       dargs: 7.0.0
@@ -2231,6 +2277,14 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
+  /has-gulplog/0.1.0:
+    dependencies:
+      sparkles: 1.0.1
+    dev: true
+    engines:
+      node: '>= 0.10'
+    resolution:
+      integrity: sha1-ZBTIKRNpfaUVkDl9r7EvIpZ4Ec4=
   /has-symbols/1.0.1:
     dev: true
     engines:
@@ -2297,13 +2351,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-kssjab8CvdXfcXMXVcvsXum4Hwdq9XGtRD3TteMEvEbq0LXyiNQr6AprqKqfeaDXze7SxWvRxdpwE6ku7ikLkg==
-  /howsmydriving-twitter/0.1.77:
+  /howsmydriving-twitter/0.1.85:
     dependencies:
       app-root-dir: 1.0.2
       app-root-path: 3.0.0
       chokidar: 3.3.1
       file-system: 2.2.2
-      howsmydriving-utils: 0.1.111
+      howsmydriving-utils: 0.1.121
       log4js: 4.5.1
       packpath: 0.1.0
       soap: 0.30.0
@@ -2313,14 +2367,14 @@ packages:
     engines:
       node: 10.x
     resolution:
-      integrity: sha512-Uu7Q0r2VmEEPYSImUrPioSyS23CMyWzzWcVB5NRk4aY7/05oitB4duDPd5XbyGHAzVex/7QhBla7mUqFSayaog==
-  /howsmydriving-utils/0.1.111:
+      integrity: sha512-W6tGEHL5XpGkluQGMcjYpsEITUFG8nFZK4zWj6POzgotSnRveXKECdGvM/1JoCZ8D2kePPFtbJzFnQN1YiI0Gw==
+  /howsmydriving-utils/0.1.121:
     dependencies:
       '@types/node': 12.12.22
       '@types/uuid': 3.4.6
       chokidar: 3.3.1
       find-port-free-sync: 1.0.1
-      howsmydriving-twitter: 0.1.77
+      howsmydriving-twitter: 0.1.85
       log4js: 6.1.0
       merge2: 1.3.0
       packpath: 0.1.0
@@ -2328,7 +2382,7 @@ packages:
     engines:
       node: 11.15.0
     resolution:
-      integrity: sha512-ihRZDXyy24qBqKesE09vBu7roSAB9xtETOv5m2gaNClKpKo1OpD/oZvj2shK/7s5CMUwC506/RddeXh9vqGiAQ==
+      integrity: sha512-hZfwGbrjbC5Nine4KsbhYZABDIrNuA4/hneGDx0PZUf5SceKys+hQR3ie+lmpA9BQNMP1MmIQ/ozFeZWl4sn8A==
   /http-errors/1.7.3:
     dependencies:
       depd: 1.1.2
@@ -2428,6 +2482,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-wPVv/y/QQ/Uiirj/vh3oP+1Ww+AWehmi1g5fFWGPF6IpCBCDVrhgHRMvrLfdYcwDh3QJbGXDW4JAuzxElLSqKA==
+  /irregular-plurals/2.0.0:
+    dev: true
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-Y75zBYLkh0lJ9qxeHlMjQ7bSbyiSqNW/UOPWDmzC7cXskL1hekSITh1Oc6JV0XCWWZ9DE8VYSB71xocLk3gmGw==
   /is-absolute/1.0.0:
     dependencies:
       is-relative: 1.0.0
@@ -2652,6 +2712,12 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha1-VRdIm1RwkbCTDglWVM7SXul+lJE=
+  /is-regexp/1.0.0:
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-/S2INUXEa6xaYz57mgnof6LLUGk=
   /is-relative/1.0.0:
     dependencies:
       is-unc-path: 1.0.0
@@ -3590,6 +3656,12 @@ packages:
     dev: true
     resolution:
       integrity: sha1-d8DLN8QVJdZBZtmQ/61+xqDhNj4=
+  /os-homedir/1.0.2:
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-/7xJiDNuDoM94MFox+8VISGqf7M=
   /os-locale/1.4.0:
     dependencies:
       lcid: 1.0.0
@@ -3893,6 +3965,14 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-L1zP0dk7vGweZME2i+EeakvUNqSrdiI3F91TwEoYiGrAfUXmVv6fJIq4g82PAXxNsWOp0J7ZqQy/3Szz0ajTxA==
+  /plur/3.1.1:
+    dependencies:
+      irregular-plurals: 2.0.0
+    dev: true
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-t1Ax8KUvV3FFII8ltczPn2tJdjqbd1sIzu6t4JL7nQ3EyeL/lTrj5PWKb06ic5/6XYDr65rQ4uzQEGN70/6X5w==
   /posix-character-classes/0.1.1:
     dev: true
     engines:
@@ -4709,6 +4789,16 @@ packages:
       safe-buffer: 5.2.0
     resolution:
       integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==
+  /stringify-object/3.3.0:
+    dependencies:
+      get-own-enumerable-property-symbols: 3.0.2
+      is-obj: 1.0.1
+      is-regexp: 1.0.0
+    dev: true
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-rHqiFh1elqCQ9WPLIC8I0Q/g/wj5J1eMkyoiD6eoQApWHP0FtlK7rqnhmabL5VUY9JQCcqwwvlOaSuutekgyrw==
   /stringify-package/1.0.1:
     dev: true
     resolution:
@@ -4852,6 +4942,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-M96dvTalPT3YbYLaKaCuwu+j06D/8Jfib0o/PxbVt6Amhv3dUAtW6rTV1jPgJSBG83I/e04Y6xkVdVhSRhi0ww==
+  /tildify/1.2.0:
+    dependencies:
+      os-homedir: 1.0.2
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-3OwD9V3Km3qj5bBPIYF+tW5jWIo=
   /time-stamp/1.1.0:
     dev: true
     engines:
@@ -5434,10 +5532,12 @@ specifiers:
   find-port-free-sync: ^1.0.1
   gulp: ^4.0.2
   gulp-cli: ^2.2.0
+  gulp-debug: ^4.0.0
+  gulp-load-plugins: ^2.0.1
   gulp-mocha: ^7.0.2
   gulp-prettier: ^2.3.0
   gulp-typescript: ^6.0.0-alpha.1
-  howsmydriving-twitter: ^0.1.77
+  howsmydriving-twitter: ^0.1.85
   log4js: ^6.1.0
   merge2: ^1.3.0
   mocha: ^6.2.2
