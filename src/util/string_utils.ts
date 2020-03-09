@@ -18,6 +18,14 @@ const ellipsis = '...';
  *   > 0 - a > b (a is numerically greater than b)
  **/
 export function CompareNumericStrings(a: string, b: string): number {
+  if (!a && !b) {
+    return 0;
+  } else if (!a) {
+    return -1;
+  } else if (!b) {
+    return 1;
+  }
+
   if (a.length > b.length) {
     b = b.lpad('0', a.length);
   }
@@ -46,8 +54,17 @@ export function CompareNumericStrings(a: string, b: string): number {
  * Returns:
  *   String representing a dump of o and all it's values.
  */
-export function DumpObject(o: any, indent: number = 0): string {
+export function DumpObject(
+  o: any,
+  levels: number = -1,
+  indent: number = 0
+): string {
   var out: string = '';
+
+  if (levels == 0) {
+    return out;
+  }
+
   if (typeof indent === 'undefined') {
     indent = 0;
   }
@@ -61,7 +78,7 @@ export function DumpObject(o: any, indent: number = 0): string {
         } else {
           out +=
             '{\n' +
-            DumpObject(val, indent + 1) +
+            DumpObject(val, levels - 1, indent + 1) +
             new Array(4 * indent + 1).join(' ') +
             '}';
         }

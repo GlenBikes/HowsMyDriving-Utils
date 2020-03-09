@@ -51,7 +51,9 @@ log4js.configure(log4js_config_path);
 // config update changes.
 var temp_log = log4js.getLogger('result');
 temp_log.addContext('module', __MODULE_NAME__);
-temp_log.info(`howsmydriving-utils: Adding log4js (${log4js_config_path}) context: ${__MODULE_NAME__}.`);
+temp_log.info(
+  `howsmydriving-utils: Adding log4js (${log4js_config_path}) context: ${__MODULE_NAME__}.`
+);
 
 export const log = temp_log;
 
