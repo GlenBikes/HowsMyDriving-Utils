@@ -1,18 +1,27 @@
 /**
- * Add lpad(string, number) to String prototype
+ * Add dateDiff(Date, Date) to Date class
  *
  * Params:
- *   pad:    character to prepend to string to make it length.
- *   l: length of string returned
+ *   d1: start date
+ *   d2: end date
  * Returns:
- *   string of length >= l where pad character is prepended to string
- *   enough times to satisfy length requirement. If string.length >= l,
- *   then the string is returned.
+ *   d2 - d1 in milliseconds.
  *
- * Exceptions:
- *   If pad is not a single character, an Error is thrown.
  *
- * See: string-ext.d.ts
+ * See: date-ext.ts
+ **/
+
+/**
+ * Add dateDiffString(Date, Date) to Date class
+ *
+ * Params:
+ *   d1: start date
+ *   d2: end date
+ * Returns:
+ *   d2 - d1 as a string of the form 'xxx yyyy' where yyy is ms/seconds/minutes/hours/days'.
+ *
+ *
+ * See: date-ext.ts
  **/
 
 declare interface Date {
