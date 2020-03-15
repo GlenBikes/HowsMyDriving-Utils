@@ -16,6 +16,8 @@ export { IStateStore } from './src/interfaces/istatestore';
 
 export { CitationIds } from './src/citationIds';
 
+export { DateDiff } from './src/util/datehelper';
+
 export { formatPlate } from './src/util/licensehelper';
 export { StatesAndProvinces } from './src/util/licensehelper';
 

@@ -3,7 +3,7 @@ dependencies:
   '@types/uuid': 3.4.6
   chokidar: 3.3.0
   find-port-free-sync: 1.0.1
-  howsmydriving-twitter: 0.1.87
+  howsmydriving-twitter: 0.1.95
   log4js: 6.1.0
   merge2: 1.3.0
   packpath: 0.1.0
@@ -106,14 +106,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-8sRGhbpU+ck1n0PGAUgVrWrWdjSW2aqNeyC15W88GRsMpSwzv6RJGlLhE7s2RhVSOdyDmxbqlWSeThq4/7xqlA==
-  /@types/node/12.12.25:
+  /@types/node/12.12.29:
     dev: false
     resolution:
-      integrity: sha512-nf1LMGZvgFX186geVZR1xMZKKblJiRfiASTHw85zED2kI1yDKHDwTKMdkaCbTlXoRKlGKaDfYywt+V0As30q3w==
+      integrity: sha512-yo8Qz0ygADGFptISDj3pOC9wXfln/5pQaN/ysDIzOaAWXt73cNHmtEC8zSO2Y+kse/txmwIAJzkYZ5fooaS5DQ==
   /@types/request/2.48.4:
     dependencies:
       '@types/caseless': 0.12.2
-      '@types/node': 12.12.25
+      '@types/node': 12.12.29
       '@types/tough-cookie': 2.3.6
       form-data: 2.5.1
     dev: false
@@ -129,6 +129,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-cCdlC/1kGEZdEglzOieLDYBxHsvEOIg7kp/2FYyVR9Pxakq+Qf/inL3RKQ+PA8gOlI/NnL+fXmQH12nwcGzsHw==
+  /@types/uuid/3.4.8:
+    dev: false
+    resolution:
+      integrity: sha512-zHWce3allXWSmRx6/AGXKCtSOA7JjeWd2L3t4aHfysNk8mouQnWCocveaT7a4IEIlPVHp81jzlnknqTgCjCLXA==
   /JSONStream/1.3.5:
     dependencies:
       jsonparse: 1.3.1
@@ -452,6 +456,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Uvq6hVe90D0B2WEnUqtdgY1bATGz3mw33nH9Y+dmA+w5DHvUmBgkr5rM/KCHpCsiFNRUfokW/szpPPgMK2hm4A==
+  /aws4/1.9.1:
+    dev: false
+    resolution:
+      integrity: sha512-wMHVg2EOHaMRxbzgFJ9gtjOOCrI80OHLG14rxi28XwOW8ux6IiEbRCGGGqCtdAIg4FQCbW20k9RsT4y3gJlFug==
   /bach/1.2.0:
     dependencies:
       arr-filter: 1.1.2
@@ -2351,13 +2359,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-kssjab8CvdXfcXMXVcvsXum4Hwdq9XGtRD3TteMEvEbq0LXyiNQr6AprqKqfeaDXze7SxWvRxdpwE6ku7ikLkg==
-  /howsmydriving-twitter/0.1.87:
+  /howsmydriving-twitter/0.1.95:
     dependencies:
       app-root-dir: 1.0.2
       app-root-path: 3.0.0
       chokidar: 3.3.1
       file-system: 2.2.2
-      howsmydriving-utils: 0.1.124
+      howsmydriving-utils: 0.1.152
       log4js: 4.5.1
       packpath: 0.1.0
       soap: 0.30.0
@@ -2367,22 +2375,22 @@ packages:
     engines:
       node: 10.x
     resolution:
-      integrity: sha512-lJRAMQi4XS1nN4NeqvCtuD4yjsBTNkhDJ46T7Zl9sxClVPgFbuTDcShi6CKr7KecM5aC8ogaNrE2FbI0wmTyQQ==
-  /howsmydriving-utils/0.1.124:
+      integrity: sha512-hAGgBmoAg3lAu47FYjlb73WGurNB4P99QvKuexyMtdaqGSxG96jSmLg574Nc2ch9B9wniJP+lZLZN4Pf+sA+lw==
+  /howsmydriving-utils/0.1.152:
     dependencies:
-      '@types/node': 12.12.25
-      '@types/uuid': 3.4.6
+      '@types/node': 12.12.29
+      '@types/uuid': 3.4.8
       chokidar: 3.3.1
       find-port-free-sync: 1.0.1
-      howsmydriving-twitter: 0.1.87
-      log4js: 6.1.0
+      howsmydriving-twitter: 0.1.95
+      log4js: 6.1.2
       merge2: 1.3.0
       packpath: 0.1.0
     dev: false
     engines:
       node: 11.15.0
     resolution:
-      integrity: sha512-qDJCF5RN97ejP5a2XaEBDTpiejwTPOSmYcL7TSohpUFMJ9/pSxEmlEDbG0K1qhVK5lSpCsoM1ST/ItIeO49tnA==
+      integrity: sha512-I+r1h/OEch/LCPCPs3m4uiBxqBiq8YSMgHFCzltIwwxWMR5AA2P/zcU0G++/Mxg9WFyL7mpUtp+xMHJ9K9FkeQ==
   /http-errors/1.7.3:
     dependencies:
       depd: 1.1.2
@@ -3105,6 +3113,18 @@ packages:
       node: '>=8.0'
     resolution:
       integrity: sha512-fSCHMYsMJbHwfNTuMlopVVcfkKwIRLh5mpNZGB2oBbnSmr3yUTo4tL4xGBA0/q29xowlu96eTXGghJFNhPXMnA==
+  /log4js/6.1.2:
+    dependencies:
+      date-format: 3.0.0
+      debug: 4.1.1
+      flatted: 2.0.1
+      rfdc: 1.1.4
+      streamroller: 2.2.3
+    dev: false
+    engines:
+      node: '>=8.0'
+    resolution:
+      integrity: sha512-knS4Y30pC1e0n7rfx3VxcLOdBCsEo0o6/C7PVTGxdVK+5b1TYOSGQPn9FDcrhkoQBV29qwmA2mtkznPAQKnxQg==
   /lolex/4.2.0:
     dev: true
     resolution:
@@ -4032,6 +4052,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-SYKKmVel98NCOYXpkwUqZqh0ahZeeKfmisiLIcEZdsb+WbLv02g/dI5BUmZnIyOe7RzZtLax81nnb2HbvC2tzA==
+  /psl/1.7.0:
+    dev: false
+    resolution:
+      integrity: sha512-5NsSEDv8zY70ScRnOTn7bK7eanl2MvFrOrS/R6x+dBt5g1ghnj9Zv90kO8GwT8gxcu2ANyFprnFYB85IogIJOQ==
   /pump/2.0.1:
     dependencies:
       end-of-stream: 1.4.4
@@ -4295,6 +4319,34 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==
+  /request/2.88.2:
+    dependencies:
+      aws-sign2: 0.7.0
+      aws4: 1.9.1
+      caseless: 0.12.0
+      combined-stream: 1.0.8
+      extend: 3.0.2
+      forever-agent: 0.6.1
+      form-data: 2.3.3
+      har-validator: 5.1.3
+      http-signature: 1.2.0
+      is-typedarray: 1.0.0
+      isstream: 0.1.2
+      json-stringify-safe: 5.0.1
+      mime-types: 2.1.26
+      oauth-sign: 0.9.0
+      performance-now: 2.1.0
+      qs: 6.5.2
+      safe-buffer: 5.2.0
+      tough-cookie: 2.5.0
+      tunnel-agent: 0.6.0
+      uuid: 3.4.0
+    deprecated: 'request has been deprecated, see https://github.com/request/request/issues/3142'
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==
   /require-directory/2.1.1:
     dev: true
     engines:
@@ -4554,7 +4606,7 @@ packages:
       debug: 4.1.1
       httpntlm: 1.7.6
       lodash: 4.17.15
-      request: 2.88.0
+      request: 2.88.2
       sax: 1.2.4
       serve-static: 1.14.1
       strip-bom: 3.0.0
@@ -5043,6 +5095,15 @@ packages:
       node: '>=0.8'
     resolution:
       integrity: sha512-Q5srk/4vDM54WJsJio3XNn6K2sCG+CQ8G5Wz6bZhRZoAe/+TxjWB/GlFAnYEbkYVlON9FMk/fE3h2RLpPXo4lQ==
+  /tough-cookie/2.5.0:
+    dependencies:
+      psl: 1.7.0
+      punycode: 2.1.1
+    dev: false
+    engines:
+      node: '>=0.8'
+    resolution:
+      integrity: sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g==
   /trim-newlines/1.0.0:
     dev: true
     engines:
@@ -5090,7 +5151,7 @@ packages:
     dependencies:
       bluebird: 3.7.2
       mime: 1.6.0
-      request: 2.88.0
+      request: 2.88.2
     dev: false
     engines:
       node: '>=0.10.0'
@@ -5562,7 +5623,7 @@ specifiers:
   gulp-mocha: ^7.0.2
   gulp-prettier: ^2.3.0
   gulp-typescript: ^6.0.0-alpha.1
-  howsmydriving-twitter: ^0.1.87
+  howsmydriving-twitter: ^0.1.95
   log4js: ^6.1.0
   merge2: ^1.3.0
   mocha: ^6.2.2
