@@ -7,12 +7,15 @@
     "declaration": true,
     "rootDir": ".",
     "outDir": "dist",
+    "allowJs": true,
     "preserveSymlinks": true,
     "downlevelIteration": true,
     "types" : ["node", "mocha"]
   },
   "include": [
     "index.ts",
+    "lib/**/*.js",
+    "locales/**/*.js",
     "src/**/*.ts",
     "test/**/*.ts"  
   ],

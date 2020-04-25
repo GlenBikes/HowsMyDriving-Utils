@@ -28,6 +28,12 @@ declare interface Date {
   dateDiff(datepart: string, todate: Date): number;
   dateDiffString(d1: Date, d2: Date): string;
 }
+/*
+Date.prototype.addDays = function(days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+};
 
 // not sure why I can't make this extended function work...
 Date.prototype.dateDiff = function(this: Date, datepart: string, todate: Date) {
@@ -38,6 +44,7 @@ Date.prototype.dateDiff = function(this: Date, datepart: string, todate: Date) {
   return Math.floor(diff / divideBy[datepart]);
 };
 
+// Why does this not work
 Date.prototype.dateDiffString = function(this: Date, d2: Date): string {
   let year_diff: number = this.dateDiff('y', d2);
   let month_diff: number = this.dateDiff('m', d2);
@@ -57,8 +64,9 @@ Date.prototype.dateDiffString = function(this: Date, d2: Date): string {
 
   return date_diff_str;
 };
+*/
 
-function plural(n: number): string {
+export function plural(n: number): string {
   let ret = 's';
   if (n == 1) {
     ret = '';

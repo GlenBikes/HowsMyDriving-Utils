@@ -3,27 +3,29 @@ import { DumpObject } from './src/util/string_utils';
 
 import { log } from './src/logging';
 
-export { ICitation } from './src/interfaces/icitation';
-export { Citation } from './src/interfaces/icitation';
+export { ICitation, Citation } from './src/interfaces/icitation';
 
-export { ICollision } from './src/interfaces/icollision';
-export { Collision } from './src/interfaces/icollision';
+export { ICollision, Collision } from './src/interfaces/icollision';
 
-export { IRegion } from './src/interfaces/iregion';
-export { Region } from './src/interfaces/iregion';
+export { IRegion, Region, RegionFactory } from './src/interfaces/iregion';
 
 export { IStateStore } from './src/interfaces/istatestore';
 
 export { CitationIds } from './src/citationIds';
 
-export { DateDiff } from './src/util/datehelper';
+export { DateDiff, DateDiffStr } from './src/util/datehelper';
 
-export { formatPlate } from './src/util/licensehelper';
-export { StatesAndProvinces } from './src/util/licensehelper';
+export { plural } from './src/util/extend/date-ext';
 
-export { DumpObject } from './src/util/string_utils';
-export { CompareNumericStrings } from './src/util/string_utils';
-export { SplitLongLines } from './src/util/string_utils';
+export { formatPlate, StatesAndProvinces } from './src/util/licensehelper';
+
+export { IMediaItem, MediaItem, MediaItemsFromString } from './src/util/media';
+
+export {
+  CompareNumericStrings,
+  DumpObject,
+  SplitLongLines
+} from './src/util/string_utils';
 
 export { sleep } from './src/util/process';
 
