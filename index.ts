@@ -13,9 +13,7 @@ export { IStateStore } from './src/interfaces/istatestore';
 
 export { CitationIds } from './src/citationIds';
 
-export { DateDiff, DateDiffStr } from './src/util/datehelper';
-
-export { plural } from './src/util/extend/date-ext';
+export { plural } from './src/util/plural';
 
 export { formatPlate, StatesAndProvinces } from './src/util/licensehelper';
 

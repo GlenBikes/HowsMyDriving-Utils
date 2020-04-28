@@ -1,7 +1,7 @@
 {
   "name": "howsmydriving-utils",
   "description": "Utilities used by howsmydriving package any howsmydriving-[region] plug-in modules.",
-  "version": "0.1.189",
+  "version": "0.1.190",
   "declaration": true,
   "main": "dist/index.js",
   "types": "definitions/index.d.ts",
