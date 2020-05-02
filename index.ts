@@ -19,6 +19,10 @@ export { formatPlate, StatesAndProvinces } from './src/util/licensehelper';
 
 export { IMediaItem, MediaItem, MediaItemsFromString } from './src/util/media';
 
+export { ITweet } from './src/interfaces/itweet';
+
+export { ITwitterUser } from './src/interfaces/itwitteruser';
+
 export {
   CompareNumericStrings,
   DumpObject,

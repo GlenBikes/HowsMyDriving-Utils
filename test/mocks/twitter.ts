@@ -1,6 +1,7 @@
 import '../../src/util/extend/string-ext';
 
-import { ITweet, ITwitterUser } from 'howsmydriving-twitter';
+import { ITweet } from '../../src/interfaces/itweet';
+import { ITwitterUser } from '../../src/interfaces/itwitteruser';
 
 export function createTweet(options: ITweet): ITweet {
   let ret: ITweet = options;
