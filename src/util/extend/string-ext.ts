@@ -34,7 +34,16 @@ String.prototype.lpad = function(this: string, pad: string, l: number) {
   return str;
 };
 
-// not sure why I can't make this extended function work...
+/**
+ * Add trunc(number) to String prototype
+ *
+ * Params:
+ *   n:  characters to truncate to
+ * Returns:
+ *   truncated string.
+ *
+ * See: string-ext.d.ts
+ **/
 String.prototype.trunc = function(n: number): string {
   if (this.length > n) {
     return this.slice(0, n - 3) + '...';

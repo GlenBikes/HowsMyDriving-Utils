@@ -1,8 +1,5 @@
 export interface ICitation {
   [index: string]: any;
-  citation_id: number;
-  license: string;
-  region: string;
 }
 
 export class Citation implements ICitation {
@@ -14,8 +11,4 @@ export class Citation implements ICitation {
       Object.assign(this, citation);
     }
   }
-
-  citation_id: number;
-  license: string;
-  region: string;
 }

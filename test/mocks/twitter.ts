@@ -1,6 +1,7 @@
 import '../../src/util/extend/string-ext';
 
-import { ITweet, ITwitterUser } from 'howsmydriving-twitter';
+import { ITweet } from '../../src/interfaces/itweet';
+import { ITwitterUser } from '../../src/interfaces/itwitteruser';
 
 export function createTweet(options: ITweet): ITweet {
   let ret: ITweet = options;
@@ -24,7 +25,7 @@ export function PrintTweet(tweet: ITweet): string {
     'id_str: ' +
     tweet.id_str +
     `, user.screen_name: ` +
-    tweet.user.screen_name +
+    tweet.user_screen_name +
     ', in_reply_to_screen_name: ' +
     tweet.in_reply_to_screen_name +
     ', in_reply_to_status_id_str: ' +

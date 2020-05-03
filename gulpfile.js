@@ -5,6 +5,7 @@ const ts = require('gulp-typescript');
 const mocha = require('gulp-mocha');
 const del = require('del');
 const path = require('path');
+var gulpDebug = require('gulp-debug');
 
 exports.build = series(clean, pretty_check, parallel(build, copyconfigfiles));
 exports.clean = clean;
